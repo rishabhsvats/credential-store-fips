@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.wildfly.security.examples</groupId>
+    <artifactId>credential-store</artifactId>
+    <version>2.0.0.Alpha1-SNAPSHOT</version>
+
+    <name>credential-store</name>
+    <description>A simple CredentialStore example.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+	<version.wildfly>27.0.1.Final</version.wildfly>
+	<exec.mainClass>org.wildfly.security.examples.CredentialStoreExample</exec.mainClass>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-ee</artifactId>
+                <scope>import</scope>
+                <type>pom</type>
+                <version>${version.wildfly}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.wildfly.security</groupId>
+            <artifactId>wildfly-elytron-credential-store</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.security</groupId>
+            <artifactId>wildfly-elytron-password-impl</artifactId>
+            <scope>provided</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.bouncycastle/bc-fips -->
+<dependency>
+    <groupId>org.bouncycastle</groupId>
+    <artifactId>bc-fips</artifactId>
+    <version>1.0.2.4</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.bouncycastle/bc-fips -->
+<dependency>
+    <groupId>org.bouncycastle</groupId>
+    <artifactId>bctls-fips</artifactId>
+    <version>1.0.19</version>
+</dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <mainClass>org.wildfly.security.examples.CredentialStoreExample</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
